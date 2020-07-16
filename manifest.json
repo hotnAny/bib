@@ -1,6 +1,6 @@
 {
     "name": "Bib — Copy BibTex in 1 click on GScholar",
-    "version": "0.0.0.1",
+    "version": "0.0.0.2",
     "description": "Copy BibTex from GScholar result page with 1 click!",
     "permissions": [
         "activeTab",
@@ -32,16 +32,16 @@
     "page_action": {
         "default_popup": "popup.html",
         "default_icon": {
-            "16": "images/bib128.png",
-            "32": "images/bib128.png",
-            "48": "images/bib128.png",
+            "16": "images/bib16.png",
+            "32": "images/bib32.png",
+            "48": "images/bib48.png",
             "128": "images/bib128.png"
         }
     },
     "icons": {
-        "16": "images/bib128.png",
-        "32": "images/bib128.png",
-        "48": "images/bib128.png",
+        "16": "images/bib16.png",
+        "32": "images/bib32.png",
+        "48": "images/bib48.png",
         "128": "images/bib128.png"
     },
     "manifest_version": 2
