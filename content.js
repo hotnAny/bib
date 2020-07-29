@@ -28,6 +28,13 @@ let setParamInUrl = (keyword, value) => {
     return location.pathname + '?' + urlParams
 }
 
+// keep track of window scrolling
+let dy = 0
+window.onscroll = () => {
+    dy = window.scrollY == 0 ? dy : window.scrollY
+};
+
+
 let url = location.href.toString()
 // if this is a bibtext page
 if (url.includes('scholar.googleusercontent.com') && getParamFromUrl(brandName) == 1) {
@@ -44,17 +51,20 @@ if (url.includes('scholar.googleusercontent.com') && getParamFromUrl(brandName) 
 else if (location.href.includes('scholar.google.com')) {
     document.body.appendChild(createSnackbar())
 
+    history.scrollRestoration = 'auto'
+
     // returning from the bibtex page
     if (getParamFromUrl(brandName) == 1) {
-        setTimeout(() => {
-            // close the citation popup
-            document.getElementById('gs_cit-x').click()
 
-            // show the snack bar feedback
-            setTimeout(() => {
-                showSnackbar()
-            }, 250);
-        }, 100);
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual'
+            window.scrollTo(0, getParamFromUrl('perc'))
+        }
+
+        setTimeout(() => {
+            showSnackbar()
+            window.scrollTo(0, getParamFromUrl('perc'))
+        }, 250);
 
         // clear the flag
         history.replaceState({ info: brandName + ' state' }, document.title, setParamInUrl(brandName, 0))
@@ -80,10 +90,15 @@ else if (location.href.includes('scholar.google.com')) {
                             Array.from(aCitations).forEach(elm => {
                                 // locate the bibtex link
                                 if (elm.href.includes('scholar.bib')) {
-                                    // add the bib param to url for passing info between pages
-                                    history.replaceState({ info: brandName + ' state' }, document.title, setParamInUrl(brandName, 1))
-                                    // redirect to the bibtex page
+                                    // add the bib and scroll perc param to url for passing info between pages
+                                    const queryString = location.search
+                                    const urlParams = new URLSearchParams(queryString)
+                                    urlParams.set(brandName, 1);
+                                    urlParams.set('perc', dy);
+                                    history.replaceState({ info: brandName + ' state', scrollTop: dy }, document.title, location.pathname + '?' + urlParams)
+
                                     location.href = elm.href + '&' + brandName + '=1'
+
                                 }
                             })
                         }, 150);
