@@ -1,6 +1,6 @@
 {
     "name": "Bib — Copy BibTex in 1 click on GScholar",
-    "version": "0.0.0.2",
+    "version": "0.0.0.3",
     "description": "Copy BibTex from GScholar result page with 1 click!",
     "permissions": [
         "activeTab",
