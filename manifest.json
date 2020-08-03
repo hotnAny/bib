@@ -1,6 +1,6 @@
 {
     "name": "Bib — Copy BibTex in 1 click on GScholar",
-    "version": "0.0.0.3",
+    "version": "0.0.0.4",
     "description": "Copy BibTex from GScholar result page with 1 click!",
     "permissions": [
         "activeTab",
@@ -16,7 +16,9 @@
         {
             "matches": [
                 "https://scholar.google.com/*",
-                "https://scholar.googleusercontent.com/scholar.bib?*"
+                "https://scholar.google.de/*",
+                "https://scholar.googleusercontent.com/scholar.bib?*",
+                "https://scholar.googleusercontent.de/scholar.bib?*"
             ],
             "js": [
                 "content.js"

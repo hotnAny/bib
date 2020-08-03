@@ -38,7 +38,7 @@ window.onscroll = () => {
 
 let url = location.href.toString()
 // if this is a bibtext page
-if (url.includes('scholar.googleusercontent.com') && getParamFromUrl(brandName) == 1) {
+if (url.includes('scholar.googleusercontent') && getParamFromUrl(brandName) == 1) {
     let strBib = document.getElementsByTagName('pre')[0].innerHTML
     try {
         navigator.clipboard.writeText(strBib)
@@ -49,7 +49,7 @@ if (url.includes('scholar.googleusercontent.com') && getParamFromUrl(brandName) 
 
 }
 // if this is a scholar search results page
-else if (location.href.includes('scholar.google.com')) {
+else if (location.href.includes('scholar.google')) {
     document.body.appendChild(createSnackbar())
 
     history.scrollRestoration = 'auto'
