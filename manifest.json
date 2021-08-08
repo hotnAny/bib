@@ -1,6 +1,6 @@
 {
     "name": "Bib: Copy BibTex in 1 click on Google Scholar",
-    "version": "0.0.0.6",
+    "version": "0.0.0.7",
     "description": "Copy BibTex from Google Scholar result page with 1 click!",
     "background": {
         "scripts": [
